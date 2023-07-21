@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rifas xxxxxyyyyy</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+    }
+
+    header {
+      background-color: #0dd3c9;
+      color: #fff;
+      text-align: center;
+      padding: 10px 0;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 42px;
+    }
+
+    p {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    /* Estilo para la cuadrícula */
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr); /* 5 columnas de ancho flexible */
+      gap: 20px; /* Espacio entre celdas */
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* Estilo para los botones */
+    .grid-item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #0dd3c9;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 24px;
+      height: 80px;
+      color: #fff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .grid-item:hover {
+      background-color: #0888ce;
+      transform: scale(1.05);
+    }
+
+    /* Estilo para la ventana emergente */
+    .popup-container {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .popup-container p {
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+
+    .popup-container button {
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+      background-color: #0dd3c9;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .popup-container select {
+    
+      margin-bottom: 15px;
+    }
+
+
+    
+
+
+    .popup-container button:hover {
+      background-color: #0888ce;
+    }
+
+    .popup-container button:last-child {
+   
+     
+      background-color: #f15b24;
+    }
+
+    .popup-container button:last-child:hover {
+      background-color: #d94b1f;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Rifas xxxxxyyyyy</h1>
+    <p>Participa en esta rifa y ganate 100.000.</p>
+  </header>
+
+  <div class="grid-container" id="gridContainer">
+    <!-- Aquí se generarán los botones dinámicamente con JavaScript -->
+  </div>
+
+  <div class="popup-container" id="popupContainer">
+    <p id="popupText">¿Estás seguro de que quieres continuar?</p>
+    <input type="text" id="nameInput" placeholder="Nombre"><br />
+    <input type="text" id="lastNameInput" placeholder="Apellido"><br />
+    <select id="paymentMethodInput">
+      <option value="" disabled selected>Seleccione el método de pago</option>
+      <option value="Cash">Efectivo</option>
+      <option value="PayPal">Nequi</option>
+    </select><br />
+    <button onclick="aceptar()">Aceptar</button>
+    <button onclick="cancelar()">Cancelar</button>
+  </div>
+
+  <footer>
+    <div style="text-align: center; padding: 10px; background-color: #f2f2f2;">
+        <p style="font-size: 14px; color: #555;">
+            Desarrollado con <span style="font-weight: bold;">&#x2764;&#xfe0f;</span> por <span style="font-weight: bold;">Samuel J. Bolaño</span> &copy; 2023
+        </p>
+    </div>
+</footer>
+  <script>
+    // Código JavaScript para generar los botones dinámicamente y agregar el evento de clic
+    const gridContainer = document.getElementById("gridContainer");
+    const popupContainer = document.getElementById("popupContainer");
+
+    for (let i = 0; i < 10; i++) {
+      for (let j = 0; j < 10; j++) {
+        const button = document.createElement("button");
+        const buttonNumber = i * 10 + j + 1;
+        const formattedNumber = buttonNumber.toString().padStart(2, '0'); // Agregamos un cero delante si es necesario
+        button.textContent = formattedNumber;
+        button.className = "grid-item";
+        button.addEventListener("click", () => mostrarVentana(formattedNumber));
+        gridContainer.appendChild(button);
+      }
+    }
+
+    // Función para mostrar la ventana emergente
+    function mostrarVentana(selectedNumber) {
+      const popupText = document.querySelector(".popup-container p");
+      popupText.textContent = "Has seleccionado el número: " + selectedNumber + " de esta Rifa. ¿Ingresa tus datos y presiona el botón Aceptar?";
+      popupContainer.style.display = "block";
+    }
+
+    // Función para aceptar
+    function aceptar() {
+      alert("¡Has seleccionado 'Aceptar'!");
+      cerrarVentana();
+    }
+
+    // Función para cancelar
+    function cancelar() {
+      
+      cerrarVentana();
+    }
+
+    // Función para cerrar la ventana emergente
+    function cerrarVentana() {
+      popupContainer.style.display = "none";
+    }
+  </script>
+</body>
+</html>
+
+
